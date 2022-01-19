@@ -5,7 +5,7 @@ module Api
       skip_before_action :verify_authenticity_token
       def create
         @employee = Employee.new employee_params
-        if @employee.save
+        if @employee.valid?
           render json: { status: 'SUCCESS', message: 'Employee created successfully', data: @employee }, status: :ok
         else
           render json: { status: 'ERROR', message: 'Employee creation failed', data: @employee.errors },

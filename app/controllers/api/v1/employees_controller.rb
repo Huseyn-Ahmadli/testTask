@@ -6,9 +6,9 @@ module Api
       def create
         @employee = Employee.new employee_params
         if @employee.save
-          render json: { status: 'SUCCESS', message: 'Employee created successfully', date: @employee }, status: :ok
+          render json: { status: 'SUCCESS', message: 'Employee created successfully', data: @employee }, status: :ok
         else
-          render json: { status: 'ERROR', message: 'Employee creation failed', date: @employee.errors },
+          render json: { status: 'ERROR', message: 'Employee creation failed', data: @employee.errors },
                  status: :unprocessable_entity
         end
       end

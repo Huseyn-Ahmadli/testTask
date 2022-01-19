@@ -4,11 +4,11 @@ module Api
     class EmployeesController < ApplicationController
       skip_before_action :verify_authenticity_token
       def create
-        @employee = Employee.new employee_params
-        if @employee.save
-          render json: { status: 'SUCCESS', message: 'Employee created successfully', data: @employee }, status: :ok
+        employee = Employee.new employee_params
+        if employee.valid?
+          render json: { status: 'SUCCESS', message: 'Employee created successfully', data: employee }, status: :ok
         else
-          render json: { status: 'ERROR', message: 'Employee creation failed', data: @employee.errors },
+          render json: { status: 'ERROR', message: 'Employee creation failed', data: employee.errors },
                  status: :unprocessable_entity
         end
       end

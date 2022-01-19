@@ -6,7 +6,7 @@ class Employee
   validates :first_name, :last_name, :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  def initialize(attributes = {})
+  def initialize(attributes)
     @first_name = attributes[:first_name]
     @last_name = attributes[:last_name]
     @email = attributes[:email]
